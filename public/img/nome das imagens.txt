@@ -1,0 +1,12 @@
+a imagem que vai ficar por trás do formulário de cadastro é cadastro-image
+login-image
+headerCadastro.jpg para a página de cadastro
+
+
+
+
+
+
+
+
+o não cadastramento do administrador, ocorrerá no cancelamento do cadastro do supermercado
