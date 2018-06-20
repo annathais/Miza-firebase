@@ -20,7 +20,7 @@
     justify-content: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background: url('../img/fundo.jpg') no-repeat;
+    background: url('./Miza-firebase/public/img/header.jpg') no-repeat;
     background-attachment: 100%;
     background-size:cover;
   }
@@ -29,17 +29,32 @@
 
   .login-box {
     width: 320px;
-    height: 420 px;
+    height: 400px;
     background: rgba(0,0,0,0.2);
     color: #fff;
     top: 50%;
-    left: 50%;
+    left: 76%;
     position: absolute;
     transform: translate(-50%,-50%);
     box-shadow: 5px 4px 50px #000;
-    border-radius: 20px;
+    border-radius: 0px;
     padding: 70px, 70px;
     
+  }
+
+  .login-box-img {
+    width: 750px;
+    height: 530px;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    top: 50%;
+    right: 40%;
+    left: 33%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    border-radius: 0px;
+    padding: 70px, 70px;
+    background: url('../public/img/login/login.png') no-repeat;
   }
   
   .signin {

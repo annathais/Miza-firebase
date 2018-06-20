@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#sobre">Sobre Nós</a>
+              <a class="nav-link js-scroll-trigger" href="https://miza-df4ae.firebaseapp.comx">Sobre Nós</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#funcionamento">Funcionamento</a>
@@ -237,5 +237,66 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
+
+<script src="js/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Include Google Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+
+  <script>
+    
+    $(document).ready(function(){
+    
+        var config = {
+            apiKey: "AIzaSyB8F0YsOukudJpWZvgSubRqqGol2vy-1_A",
+            authDomain: "miza-df4ae.firebaseapp.com",
+            databaseURL: "https://miza-df4ae.firebaseio.com",
+            projectId: "miza-df4ae",
+            storageBucket: "miza-df4ae.appspot.com",
+            messagingSenderId: "423909895875"
+        };
+        firebase.initializeApp(config);
+
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+              console.log("autenticado");
+              console.log(user);
+
+              $("btnLogin").css("display", "none");
+
+              $("body").append('<div class="alert alert-info" role="alert">Autenticado! '+user.email+'</div>');
+              $("#btnSair").css("display", "block");
+            }
+        });
+
+        $("#btnSair").on("click", function(){
+            firebase.auth().signOut();
+            $("#btnSair").cass("display", "none");
+
+            return false;
+        });
+
+        $("#btnLogin").on("click", function(){
+            var email = $("#loginAdministrador").val();
+            var senha = $("#senhaAdministrador").val();
+
+            firebase.auth().signInWithEmailAndPassword(email, senha).catch(function(error){
+                 console.log("Falha na autenticação");
+                 console.log(error);
+                 var errorCode = error.code;
+                 var errorMessage = error.message;
+
+                 if(errorCode === 'auth/wrong-password'){
+                    alert('Senha invalida.');
+                 }else{
+                    alert(errorMessage);
+                 }
+          });
+          return false;
+      });
+    });
+  </script>
+    
 </body>
 </html>
