@@ -1,6 +1,7 @@
 a imagem que vai ficar por trás do formulário de cadastro é cadastro-image
 login-image
 headerCadastro.jpg para a página de cadastro
+headerCadastroAdministrador.jpg para a página de cadastro administrador
 
 
 
