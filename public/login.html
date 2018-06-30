@@ -1,104 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<link rel="icon" href="img/Icon.png">
- 
+    <link rel="icon" href="img/Icon.png">
+
     <title>MIZA Login</title>
 
     <!--  Bootstrap  -->
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
 
 
     <!-- Estilos personalizados -->
     <link href="css/login.css" rel="stylesheet">
-    
-	
+
+
 </head>
+
 <body>
-	<div class="login-box ">
-        
-        <form class="signin" >
-        <div   class="text-center mb-4">
-            <img class="mb-4" src="#" alt="" width="72" height="72">
-            <h1  class="h3 mb-3 font-weight-normal">Login</h1>
-        </div>
-        <div class="form-label-group">
-            <input type="text" name="nomeLogin" id="inputnome" class="form-control" placeholder="email" required autofocus>
-            <label for="inputnome">Usuário </label>
-        </div>
-        <div class="form-label-group">
-            <input type="password" name ="senha" id="inputPassword" class="form-control" placeholder="Password" required autofocus></br>        
-            <label for="inputPassword">Senha</label>
-        </div>
-        <button class="btn btn-primary btn-group-toggle btn-block" type="submit">Entrar </button>
-        <p class="mt-5 mb-3  text-center">&copy; Nome do teu sistema 2018</p>
+    <div class="login-box ">
+
+        <form class="signin">
+            <div class="text-center mb-4">
+                <img class="mb-4" src="#" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            </div>
+            <div class="form-label-group">
+                <input type="text" name="nomeLogin" id="inputnome" class="form-control" placeholder="email" required autofocus>
+                <label for="inputnome">Usuário </label>
+            </div>
+            <div class="form-label-group">
+                <input type="password" name="senha" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
+                </br>
+                <label for="inputPassword">Senha</label>
+            </div>
+            <button class="btn btn-primary btn-group-toggle btn-block" type="submit">Entrar </button>
+            <p class="mt-5 mb-3  text-center">&copy; Nome do teu sistema 2018</p>
         </form>
     </div>
- <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Include Google Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 
-	<script>
-    
-	  $(document).ready(function(){
-	  
-        var config = {
-            apiKey: "AIzaSyB8F0YsOukudJpWZvgSubRqqGol2vy-1_A",
-            authDomain: "miza-df4ae.firebaseapp.com",
-            databaseURL: "https://miza-df4ae.firebaseio.com",
-            projectId: "miza-df4ae",
-            storageBucket: "miza-df4ae.appspot.com",
-            messagingSenderId: "423909895875"
-        };
-        firebase.initializeApp(config);
+    <script>
 
-        firebase.auth().onAuthStateChanged(function(user){
-            if(user){
-              console.log("autenticado");
-              console.log(user);
+        $(document).ready(function () {
 
-              $("btnLogin").css("display", "none");
+            var config = {
+                apiKey: "AIzaSyB8F0YsOukudJpWZvgSubRqqGol2vy-1_A",
+                authDomain: "miza-df4ae.firebaseapp.com",
+                databaseURL: "https://miza-df4ae.firebaseio.com",
+                projectId: "miza-df4ae",
+                storageBucket: "miza-df4ae.appspot.com",
+                messagingSenderId: "423909895875"
+            };
+            firebase.initializeApp(config);
 
-              $("body").append('<div class="alert alert-info" role="alert">Autenticado! '+user.email+'</div>');
-              $("#btnSair").css("display", "block");
-            }
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    console.log("autenticado");
+                    console.log(user);
+
+                    $("btnLogin").css("display", "none");
+
+                    $("body").append('<div class="alert alert-info" role="alert">Autenticado! ' + user.email + '</div>');
+                    $("#btnSair").css("display", "block");
+                }
+            });
+
+            $("#btnSair").on("click", function () {
+                firebase.auth().signOut();
+                $("#btnSair").cass("display", "none");
+
+                return false;
+            });
+
+            $("#btnLogin").on("click", function () {
+                var email = $("#loginAdministrador").val();
+                var senha = $("#senhaAdministrador").val();
+
+                firebase.auth().signInWithEmailAndPassword(email, senha).catch(function (error) {
+                    console.log("Falha na autenticação");
+                    console.log(error);
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+
+                    if (errorCode === 'auth/wrong-password') {
+                        alert('Senha invalida.');
+                    } else {
+                        alert(errorMessage);
+                    }
+                });
+                return false;
+            });
         });
-
-        $("#btnSair").on("click", function(){
-            firebase.auth().signOut();
-            $("#btnSair").cass("display", "none");
-
-            return false;
-        });
-
-        $("#btnLogin").on("click", function(){
-            var email = $("#loginAdministrador").val();
-            var senha = $("#senhaAdministrador").val();
-
-            firebase.auth().signInWithEmailAndPassword(email, senha).catch(function(error){
-                 console.log("Falha na autenticação");
-                 console.log(error);
-                 var errorCode = error.code;
-                 var errorMessage = error.message;
-
-                 if(errorCode === 'auth/wrong-password'){
-                    alert('Senha invalida.');
-                 }else{
-                    alert(errorMessage);
-                 }
-          });
-          return false;
-      });
-	  });
-	</script>
+    </script>
 
 </body>
+
 </html>
