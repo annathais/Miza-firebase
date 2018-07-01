@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/Icon.png">
 
-    <title>Cadastro</title>
+    <title>Cadastrar Supermercado</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -62,29 +62,37 @@
             <!-- Conteudo Principal -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Administrador</h1>
+                    <h1 class="h2">Supermercado</h1>
                 </div>
 
                 <form method="POST" action="/Banco/conexao/conexaoCadastroProf.php">
                     <div class="form-row ">
-                        <div class="form-group col-md-6">
-                            <label>Nome Completo</label>
+                        <div class="form-group col-md-9">
+                            <label>Nome do Supermercado </label>
                             <input type="text" class="form-control" name="nome" required autofocus>
                         </div>
-                        <div class="form-group col-md-6 ">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="exemple@exemple.com" name="email" required autofocus>
-                        </div>
+                        <div class="form-group col-md-3 ">
+                                <label>Numero</label>
+                                <input type="number" class="form-control"  name="email" required autofocus="">
+                            </div>
+                        
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Confirmar Senha</label>
-                            <input type="text" class="form-control" required autofocus>
+                        <div class="form-group col-md-4">
+                            <label>Telefone</label>
+                            <input type="Number" class="form-control" required autofocus>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>Confirmar Senha</label>
-                            <input type="text" class="form-control" required autofocus>
-                        </div>
+                        <div class="form-group col-md-4 ">
+                                <label>Logradouro</label>
+                                <input type="text" class="form-control"  name="email" required autofocus="off">
+                            </div>
+                            
+                            <div class="form-group col-md-4">
+                                    <label>Bairro</label>
+                                    <input type="text" class="form-control" required autofocus>
+                                </div>
+                      
+                        
                     </div>
                     <center>
                         <button type="reset" class="btn btn-secondary ">Limpar</button>

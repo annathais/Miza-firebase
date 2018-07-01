@@ -1,3 +1,7 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
 body {
     font-size: .875rem;
   }
@@ -19,7 +23,7 @@ body {
     left: 0;
     z-index: 100; /* Behind the navbar */
     padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(133, 223, 16, 0.1);
+    box-shadow: inset -1px 0 0 rgba(144, 252, 4, 0.1);
   }
   
   .sidebar-sticky {
@@ -73,7 +77,10 @@ body {
   /*
    * Navbar
    */
-  
+  .navbar-nav{
+    background-color: rgba(0, 139, 139);
+    border: 0.32rem solid rgba(0, 139, 139);;
+  }
   .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
@@ -89,7 +96,7 @@ body {
   }
   
   .form-control-dark {
-    color: #fff;
+    color: rgba(0, 139, 139);
     background-color: rgba(32, 178, 170,.4);
     border-color: rgba(0, 139, 139, .1);
   }
