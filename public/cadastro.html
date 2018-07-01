@@ -267,27 +267,57 @@
 
     </script>
     <script type="text/javascript">
+      
+
+    $("#btnCadastro").on("click", function () {
+      /*
+      var usersRef = ref.child("supermercado");
+      var nome = $("#nomeSupermercado").val();
+      var bairro = $("#bairroSupermercado").val();
+      var cep = $("#cepSupermercado").val();
+      var cidade = $("#cidadeSupermercado").val();
+      var cnpj = $("#cnpjSupermercado").val();
+      var email = $("#emailSupermercado").val();
+      var estado = $("#estadoSupermercado").val();
+      var numero = $("#numeroSupermercado").val();
+      var rua = $("#ruaSupermercado").val();
+      var telefone = $("#telefoneSupermercado").val();
+
+      firebase.auth().signInWithEmailAndPassword(email, senha).catch(function (error) {
+        console.log("Falha na autenticação");
+        console.log(error);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        if (errorCode === 'auth/wrong-password') {
+          alert('Senha invalida.');
+        } else {
+          alert(errorMessage);
+        }
+      });
+      return false;
+      */
+
       var usersRef = ref.child("supermercado");
       usersRef.set({
         alanisawesome: {
-          bairro: "",
-          cep: "",
-          cidade: "",
-          cnpj: "",
-          email: "",
-          estado: "",
-          nome: "",
-          numero: "",
-          rua: "",
-          telefone: ""
-          date_of_birth: "June 23, 1912",
-          full_name: "Alan Turing"
+          nome: "nomeSupermercado",
+          bairro: "bairroSupermercado",
+          cep: "cepSupermercado",
+          cidade: "cidadeSupermercado",
+          cnpj: "cnpjSupermercado",
+          email: "emailSupermercado",
+          estado: "estadoSupermercado",
+          numero: "numeroSupermercado",
+          rua: "ruaSupermercado",
+          telefone: "telefoneSupermercado"
         },
         gracehop: {
           date_of_birth: "December 9, 1906",
           full_name: "Grace Hopper"
         }
       });
+    });
     </script>
     
 </body>
